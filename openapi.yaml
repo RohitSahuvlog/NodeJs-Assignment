@@ -16,8 +16,8 @@ paths:
             schema:
               type: object
               example:
-                password: rohit@1234
-                email: sahu86744@gmail.com
+                password: admin@1234
+                email: admin@gmail.com
       responses:
         '200':
           description: Successful response

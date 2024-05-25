@@ -8,6 +8,8 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const session = require('express-session');
 const User = require('./models/User');
 const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
 
 const app = express();
 const PORT = process.env.PORT;
@@ -52,7 +54,6 @@ passport.use(new GoogleStrategy({
                 googleId: id,
                 profilePicture,
                 username: displayName,
-                phoneNumber: "NA"
             });
         } else {
             user.username = displayName;
@@ -95,6 +96,10 @@ app.get('/auth/google/callback',
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
+
+// Swagger Setup
+const swaggerDocument = YAML.load('./openapi.yaml');
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Database Connection and Server Start
 app.listen(PORT, () => {

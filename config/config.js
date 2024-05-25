@@ -3,8 +3,8 @@ dotenv.config();
 
 module.exports = {
     port: process?.env.PORT || 3000,
-    jwtSecret: process?.env?.JWT_SECRET || 'your_jwt_secret',
-    mongoURI: process?.env?.MONGO_URI || 'your_mongo_uri',
+    jwtSecret: process?.env?.JWT_SECRET || '967623594111627',
+    mongoURI: process?.env?.MONGO_URI || 'mongodb+srv://RohitSahu:RHcAMf4JzpCcEbeh@cluster0.iepjb1n.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
     cloudinaryConfig: {
         cloudName: process?.env?.CLOUDINARY_CLOUD_NAME || 'dg5dkcpkn',
         apiKey: process?.env?.CLOUDINARY_API_KEY || '967623594111627',

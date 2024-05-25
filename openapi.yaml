@@ -1,0 +1,172 @@
+openapi: 3.0.0
+info:
+  title: Node-js-assigment
+  version: 1.0.0
+servers:
+  - url: https://nodejs-assignment-xiwv.onrender.com
+paths:
+  /api/auth/login:
+    post:
+      tags:
+        - default
+      summary: api/auth/login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                password: rohit@1234
+                email: sahu86744@gmail.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/auth/logout:
+    post:
+      tags:
+        - default
+      summary: api/auth/logout
+      requestBody:
+        content: {}
+      parameters:
+        - name: authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjUxYzk5NTBkOTc4YmY0MmM5ZTVjMGYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTY2MzYyMDcsImV4cCI6MTcxNjYzOTgwN30.cc-agM5_Y-EpqDMLX7M550VmzasennBdOWD4noo6HHk
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/profile/me:
+    get:
+      tags:
+        - default
+      summary: /api/profile/me
+      parameters:
+        - name: authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjUxYzk2NTljNGM3OGJhNWJmNjcwYTkiLCJyb2xlIjoidXNlciIsImlhdCI6MTcxNjYzNzUwNywiZXhwIjoxNzE2NjQxMTA3fQ.KG4dRnfB7bok0IUt1DeRzLhfOnCNfh9e67qzTZdI-ks
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - default
+      summary: api/profile/me
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                photo:
+                  type: string
+                  format: binary
+                name:
+                  type: string
+                  example: John Doejhdjjhf
+                bio:
+                  type: string
+                  example: Software Developer at Example Corp.dsjfhdsj
+                phone:
+                  type: string
+                  example: +1234567890dskfjh87686
+                email:
+                  type: string
+                  example: johndoe@example.com
+                isPublic:
+                  type: boolean
+                  example: 'false'
+      parameters:
+        - name: authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjUxYzk2NTljNGM3OGJhNWJmNjcwYTkiLCJyb2xlIjoidXNlciIsImlhdCI6MTcxNjYzNjA5OSwiZXhwIjoxNzE2NjM5Njk5fQ.X7sspHHaMFCy5L28aRx1Ffyd0sjH5z2BWTqlmuZoBdg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/profile/public:
+    get:
+      tags:
+        - default
+      summary: /api/profile/public
+      parameters:
+        - name: authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjUxODc4ZTMxM2ZmMDMxZmUyZTYxNjMiLCJyb2xlIjoidXNlciIsImlhdCI6MTcxNjYxOTE1NiwiZXhwIjoxNzE2NjIyNzU2fQ.IeYL4uXy2DvDVTq169KRXteP6YbC4uq8wVmhkLrbLCw
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/profile/all:
+    get:
+      tags:
+        - default
+      summary: /api/profile/all
+      parameters:
+        - name: authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjUxYzk5NTBkOTc4YmY0MmM5ZTVjMGYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTY2MzYyMDcsImV4cCI6MTcxNjYzOTgwN30.cc-agM5_Y-EpqDMLX7M550VmzasennBdOWD4noo6HHk
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/auth/register:
+    post:
+      tags:
+        - default
+      summary: /api/auth/register
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                photo:
+                  type: string
+                  format: binary
+                username:
+                  type: string
+                  example: John Doe
+                bio:
+                  type: string
+                  example: Software Developer at Example Corp.
+                phone:
+                  type: number
+                  example: '+1234567890'
+                email:
+                  type: string
+                  example: johndoe@example.com
+                isPublic:
+                  type: boolean
+                  example: 'false'
+                password:
+                  type: integer
+                  example: '12345'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
